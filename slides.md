@@ -58,8 +58,8 @@ transition: fade-out
 
 <v-clicks>
 
-- database transaction successful - write to ES failed
-- database transaction rolled back - write to ES succeeded
+- Database transaction successful - write to ES failed
+- Database transaction rolled back - write to ES succeeded
 
 </v-clicks>
 
@@ -98,7 +98,96 @@ layout: center
   Gunnar Morling - 97 Things Every Data Engineer Should Know
 </div>
 
+---
+transition: fade-out
+---
+# Alternatives
 
+<v-clicks depth="2">
+
+- Distributed transaction
+  - Lack of support (Elasticsearch, Kafka,...)
+  - Slow
+  - Additional component/single point of failure
+
+</v-clicks>
+
+---
+transition: fade-out
+---
+# Debezium
+
+<v-clicks>
+
+- Open source change data capture platform
+- Uses Kafka for event storage/distribution
+
+</v-clicks>
+
+---
+transition: fade-out
+---
+# Basic idea
+
+<v-clicks>
+
+- Parse transaction log
+- Publish events to a message broker (Kafka)
+
+</v-clicks>
+
+---
+layout: image
+image: /architecture.png
+backgroundSize: 30em 30%
+---
+# Architecture
+
+<div class="absolute bottom-4 left-6 text-xs text-white opacity-80">
+  Source: <a href="https://debezium.io/documentation/reference/3.1/architecture.html">Debezium.io</a>
+</div>
+
+---
+transition: fade-out
+layout: center
+---
+
+<div class="text-[4rem] text-white-800">
+    💻 Demo 💻
+</div>
+
+
+---
+transition: fade-out
+---
+# Summary
+
+### Advantages
+
+<br/>
+<v-clicks>
+
+- Robustness
+- Scalability
+- No modification of application code needed
+
+</v-clicks>
+
+---
+transition: fade-out
+---
+# Summary
+
+### Disadvantages 
+
+<br/>
+<v-clicks>
+
+- Complexity
+- More components to maintain
+- Another tool to learn
+
+</v-clicks>
 
 
 

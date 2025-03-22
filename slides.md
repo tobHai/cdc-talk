@@ -46,20 +46,17 @@ drawFilePath="./cdc-dual-write.excalidraw"
 :background="false"
 />
 
-
 ---
-transition: fade-out
-layout: center
----
-
-<img src="./bug-report.png" alt="Angry Users" width="600" />
-
----
-transition: fade-out
-layout: center
+layout: image
+image: /bug-report.png
+backgroundSize: 30em 80%
 ---
 
-<img src="./challenger.png" alt="Challenger approaching"/>
+---
+layout: image
+image: /challenger.png
+backgroundSize: 45em 80%
+---
 
 ---
 transition: fade-out

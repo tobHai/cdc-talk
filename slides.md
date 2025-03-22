@@ -20,10 +20,6 @@ overviewSnapshots: true
 
 # Change Data Capture
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
 ---
 transition: fade-out
 layout: center
@@ -34,6 +30,15 @@ drawFilePath="./application.excalidraw"
 :darkMode="true"
 :background="false"
 />
+
+<!--
+Application stores documents  
+Customer picky  
+Unhappy with search experience  
+We decide to add Elasticsearch  
+Sidenote: DB more powerful  
+Go forward with ES  
+-->
 
 ---
 transition: fade-out
@@ -46,12 +51,27 @@ drawFilePath="./cdc-dual-write.excalidraw"
 :background="false"
 />
 
+<!--
+User adds document  
+Write to both datastore
+Data engineering: Dual write  
+Proud & deploy to Prod  
+Users happy  
+Superb experience  
+Bug reports  
+-->
+
 ---
 layout: image
 image: /bug-report.png
 backgroundSize: 30em 80%
 ---
-
+<!--
+Document cannot be found  
+Although they exist in the database  
+Document can be found  
+Which do not exist in the database  
+-->
 ---
 layout: image
 image: /challenger.png
@@ -70,6 +90,11 @@ transition: fade-out
 
 </v-clicks>
 
+<!--
+ Could add commit listener, retry etc  
+ Not ideal - hard to solve all cases properly  
+-->
+
 ---
 layout: image
 image: /race-conditions.png
@@ -80,6 +105,11 @@ backgroundSize: 20em 70%
 <div class="absolute bottom-4 left-6 text-xs text-white opacity-80">
   Source: <a href="https://martin.kleppmann.com/2015/05/27/logs-for-data-infrastructure.html">Martin Kleppmann</a>
 </div>
+
+<!--
+Order issues  
+Out of sync due to race conditions  
+-->
 
 ---
 transition: fade-out
@@ -115,9 +145,16 @@ transition: fade-out
 - Distributed transaction
   - Lack of support (Elasticsearch, Kafka,...)
   - Slow
-  - Additional component/single point of failure
 
 </v-clicks>
+
+
+<!--
+  No silver bullet either  
+  Not supported by data stores  
+  Single point of failure  
+  Might need additional transaction manager
+-->
 
 ---
 transition: fade-out
@@ -131,6 +168,11 @@ transition: fade-out
 
 </v-clicks>
 
+<!--
+  Sponsored by Redhat  
+  Supports most modern data stores  
+-->
+
 ---
 transition: fade-out
 ---
@@ -143,6 +185,16 @@ transition: fade-out
 
 </v-clicks>
 
+<!--
+  Transaction log: foundation of modern database system  
+  Each action executed recorded in log
+  Turning the database inside out  
+  Low level construct (log) -> API for consuming it
+
+  Provides the D in ACID  
+  ARIES for recovery algorithm
+-->
+
 ---
 layout: image
 image: /architecture.png
@@ -153,6 +205,14 @@ backgroundSize: 30em 30%
 <div class="absolute bottom-4 left-6 text-xs text-white opacity-80">
   Source: <a href="https://debezium.io/documentation/reference/3.1/architecture.html">Debezium.io</a>
 </div>
+
+<!--
+  Kafka Connect: data integration framework 
+  Written in Java  
+  Embedded mode (replaces Kafka Connect)  
+  At least once delivery  
+  Ordering of events  
+-->
 
 ---
 transition: fade-out
@@ -180,6 +240,12 @@ transition: fade-out
 
 </v-clicks>
 
+<!--
+  More robust than hand crafted solution  
+  Tested by the community  
+  Application does not need to know anything about it (legacy modernization)
+-->
+
 ---
 transition: fade-out
 ---
@@ -197,4 +263,9 @@ transition: fade-out
 </v-clicks>
 
 
+<!--
+  No silver bullet either  
+  More components to maintain (infrastructure)/cost
+  Another tool to learn etc.
+-->
 

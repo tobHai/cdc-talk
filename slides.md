@@ -3,7 +3,7 @@
 theme: default
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: cover.jpg
+background: /images/cover.jpg
 title: Change Data Capture
 # apply unocss classes to the current slide
 class: text-center
@@ -26,7 +26,7 @@ layout: center
 ---
 
 <Excalidraw
-drawFilePath="./application.excalidraw"
+drawFilePath="./images/application.excalidraw"
 :darkMode="true"
 :background="false"
 />
@@ -46,7 +46,7 @@ layout: center
 ---
 
 <Excalidraw
-drawFilePath="./cdc-dual-write.excalidraw"
+drawFilePath="./images/cdc-dual-write.excalidraw"
 :darkMode="true"
 :background="false"
 />
@@ -63,7 +63,7 @@ Bug reports
 
 ---
 layout: image
-image: /bug-report.png
+image: /images/bug-report.png
 backgroundSize: 30em 80%
 ---
 <!--
@@ -74,7 +74,7 @@ Which do not exist in the database
 -->
 ---
 layout: image
-image: /challenger.png
+image: /images/challenger.png
 backgroundSize: 45em 80%
 ---
 
@@ -97,7 +97,7 @@ transition: fade-out
 
 ---
 layout: image
-image: /race-conditions.png
+image: /images/race-conditions.png
 backgroundSize: 20em 70%
 ---
 ### Race conditions 😱
@@ -117,7 +117,7 @@ layout: center
 ---
 
 <Excalidraw
-drawFilePath="./cdc-dual-write-crossed.excalidraw"
+drawFilePath="./images/cdc-dual-write-crossed.excalidraw"
 :darkMode="true"
 :background="false"
 />
@@ -197,7 +197,7 @@ transition: fade-out
 
 ---
 layout: image
-image: /architecture.png
+image: /images/architecture.png
 backgroundSize: 30em 30%
 ---
 # Architecture

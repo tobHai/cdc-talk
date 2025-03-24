@@ -95,6 +95,7 @@ transition: fade-out
 <!--
  Could add commit listener, retry etc  
  Not ideal - hard to solve all cases properly  
+ Writes might arrive in different order at different data stores
 -->
 
 ---
@@ -107,6 +108,11 @@ drawFilePath="cdc-dual-write-crossed.excalidraw"
 :darkMode="true"
 :background="false"
 />
+
+<!--
+  Simple solution not working properly  
+  Agree with Gunnar  
+-->
 
 ---
 transition: fade-out
@@ -143,7 +149,7 @@ transition: fade-out
   Synchronization between participants: performance overhead  
   Not supported by data stores  
   Support for Kafka will be added (currently in development)  
-  But the offer strong consistency guarantees  
+  But they offer strong consistency guarantees  
   
   Patterns might help avoid dual-writes as well but deserve an extra talk.  
   Saga (undo/compensating actions), Outbox (write to additional table in same transaction)
@@ -164,8 +170,10 @@ transition: fade-out
 </v-clicks>
 
 <!--
+  Listen to changes in a datastore   
+
   Transaction log: foundation of modern database system  
-  Each action executed recorded in log
+  Each action executed recorded in log  
   Turning the database inside out  
   Low level construct (log) -> API for consuming it
 
@@ -182,12 +190,14 @@ transition: fade-out
 
 - Open source change data capture platform
 - Uses Kafka for event storage/distribution
+- Supports most modern data stores
 
 </v-clicks>
 
 <!--
   Sponsored by Redhat  
-  Supports most modern data stores    
+  Supports most modern data stores  
+  No need for reinventing the wheel  
   Great ecosystem  
 -->
 
@@ -204,9 +214,9 @@ backgroundSize: 30em 30%
 
 <!--
   Kafka Connect: data integration framework 
-  Written in Java  
+  Debezium: written in Java  
   Embedded mode (replaces Kafka Connect)  
-  At least once delivery  
+  Guarantees: At least once delivery  
   Ordering of events  
 -->
 
@@ -239,7 +249,7 @@ transition: fade-out
 
 <!--
   More robust than hand crafted solution  
-  Tested by the community  
+  Tested by the community/used in high volume scenarios  
   Application does not need to know anything about it (legacy modernization)  
   Add more data stores easily - simply consume events somewhere else
 -->
@@ -263,9 +273,19 @@ transition: fade-out
 
 <!--
   No silver bullet either  
-  More components to maintain (infrastructure)/cost
-  Another tool to learn etc.
+  More components to maintain (infrastructure)/cost  
+  Another tool to learn etc.  
+  Great tool if you have infrastructure in place already  
 -->
+
+---
+transition: fade-out
+layout: center
+---
+
+<div class="text-[2rem] text-white-800">
+    Thanks for listening!
+</div>
 
 ---
 layout: image

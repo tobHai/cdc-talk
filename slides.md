@@ -222,6 +222,29 @@ backgroundSize: 30em 30%
 
 ---
 transition: fade-out
+---
+# Use cases
+
+<v-clicks>
+
+- Data replication/synchronization
+  - Cache, search index, DWH
+- Software modernization
+- Analytics
+  - How many orders have been created in the last 5 hours
+- Audit log
+
+</v-clicks>
+
+<!--
+  Keep caches in sync, keep search index in sync, replicate to DWH, standby db.  
+  Zero-downtime migrations (populate DB in parallel)  
+  Analyze data on the fly (number of inserts, updates, etc.)  
+  All data manipulation events captured with timestamp etc.  (before/after) values  
+-->
+
+---
+transition: fade-out
 layout: center
 ---
 

@@ -3,7 +3,7 @@
 theme: default
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: cover.jpg
+background: /cover.jpg
 title: Change Data Capture
 # apply unocss classes to the current slide
 class: text-center
@@ -63,7 +63,7 @@ Bug reports
 
 ---
 layout: image
-image: bug-report.png
+image: /bug-report.png
 backgroundSize: 30em 80%
 ---
 <!--
@@ -75,7 +75,7 @@ What went wrong?!
 -->
 ---
 layout: image
-image: challenger.png
+image: /challenger.png
 backgroundSize: 45em 80%
 ---
 
@@ -203,7 +203,7 @@ transition: fade-out
 
 ---
 layout: image
-image: architecture.png
+image: /architecture.png
 backgroundSize: 30em 30%
 ---
 # Architecture
@@ -289,7 +289,7 @@ layout: center
 
 ---
 layout: image
-image: race-conditions.png
+image: /race-conditions.png
 backgroundSize: 20em 70%
 ---
 ### Race conditions 😱

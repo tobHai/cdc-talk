@@ -37,7 +37,7 @@ Customer picky
 Unhappy with search experience  
 We decide to add Elasticsearch  
 Sidenote: DB more powerful  
-Go forward with ES  
+Love to tinker - go forward with ES  
 -->
 
 ---
@@ -71,6 +71,7 @@ Document cannot be found
 Although they exist in the database  
 Document can be found  
 Which do not exist in the database  
+What went wrong?!
 -->
 ---
 layout: image
@@ -87,28 +88,13 @@ transition: fade-out
 
 - Database transaction successful - write to ES failed
 - Database transaction rolled back - write to ES succeeded
+- Ordering issues
 
 </v-clicks>
 
 <!--
  Could add commit listener, retry etc  
  Not ideal - hard to solve all cases properly  
--->
-
----
-layout: image
-image: race-conditions.png
-backgroundSize: 20em 70%
----
-### Race conditions 😱
-
-<div class="absolute bottom-4 left-6 text-xs text-white opacity-80">
-  Source: <a href="https://martin.kleppmann.com/2015/05/27/logs-for-data-infrastructure.html">Martin Kleppmann</a>
-</div>
-
-<!--
-Order issues  
-Out of sync due to race conditions  
 -->
 
 ---
@@ -143,17 +129,48 @@ transition: fade-out
 <v-clicks depth="2">
 
 - Distributed transaction
-  - Lack of support (Elasticsearch, Kafka,...)
   - Slow
+  - Lack of support (Elasticsearch, Kafka,...)
+- Patterns
+  - Outbox
+  - Saga
+- CDC tools
 
 </v-clicks>
 
 
 <!--
-  No silver bullet either  
+  Synchronization between participants: performance overhead  
   Not supported by data stores  
-  Single point of failure  
-  Might need additional transaction manager
+  Support for Kafka will be added (currently in development)  
+  But the offer strong consistency guarantees  
+  
+  Patterns might help avoid dual-writes as well but deserve an extra talk.  
+  Saga (undo/compensating actions), Outbox (write to additional table in same transaction)
+-->
+
+---
+transition: fade-out
+---
+# Basic idea
+
+<v-clicks>
+
+- Parse transaction log
+- Transform into usable event
+- Publish events to a message broker (Kafka)
+- Consume event from message broker
+
+</v-clicks>
+
+<!--
+  Transaction log: foundation of modern database system  
+  Each action executed recorded in log
+  Turning the database inside out  
+  Low level construct (log) -> API for consuming it
+
+  Provides the D in ACID  
+  ARIES for recovery algorithm
 -->
 
 ---
@@ -170,29 +187,8 @@ transition: fade-out
 
 <!--
   Sponsored by Redhat  
-  Supports most modern data stores  
--->
-
----
-transition: fade-out
----
-# Basic idea
-
-<v-clicks>
-
-- Parse transaction log
-- Publish events to a message broker (Kafka)
-
-</v-clicks>
-
-<!--
-  Transaction log: foundation of modern database system  
-  Each action executed recorded in log
-  Turning the database inside out  
-  Low level construct (log) -> API for consuming it
-
-  Provides the D in ACID  
-  ARIES for recovery algorithm
+  Supports most modern data stores    
+  Great ecosystem  
 -->
 
 ---
@@ -237,13 +233,15 @@ transition: fade-out
 - Robustness
 - Scalability
 - No modification of application code needed
+- Additional data stores can be added easily
 
 </v-clicks>
 
 <!--
   More robust than hand crafted solution  
   Tested by the community  
-  Application does not need to know anything about it (legacy modernization)
+  Application does not need to know anything about it (legacy modernization)  
+  Add more data stores easily - simply consume events somewhere else
 -->
 
 ---
@@ -269,3 +267,18 @@ transition: fade-out
   Another tool to learn etc.
 -->
 
+---
+layout: image
+image: race-conditions.png
+backgroundSize: 20em 70%
+---
+### Race conditions 😱
+
+<div class="absolute bottom-4 left-6 text-xs text-white opacity-80">
+  Source: <a href="https://martin.kleppmann.com/2015/05/27/logs-for-data-infrastructure.html">Martin Kleppmann</a>
+</div>
+
+<!--
+Order issues  
+Out of sync due to race conditions  
+-->

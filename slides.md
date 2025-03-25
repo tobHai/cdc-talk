@@ -79,6 +79,11 @@ image: /challenger.png
 backgroundSize: 45em 80%
 ---
 
+<!--
+ Data engineering: setup called DUAL WRITES  
+ DB & message broker, DB & cache,...
+-->
+
 ---
 transition: fade-out
 ---
@@ -170,7 +175,7 @@ transition: fade-out
 </v-clicks>
 
 <!--
-  Listen to changes in a datastore   
+  Listen to changes in a datastore -> propagate changes to another store  
 
   Transaction log: foundation of modern database system  
   Each action executed recorded in log  
@@ -272,7 +277,7 @@ transition: fade-out
 
 <!--
   More robust than hand crafted solution  
-  Tested by the community/used in high volume scenarios  
+  Tested by the community/used in big systems 
   Application does not need to know anything about it (legacy modernization)  
   Add more data stores easily - simply consume events somewhere else
 -->
